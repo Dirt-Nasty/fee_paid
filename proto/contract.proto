@@ -1,0 +1,195 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package contract.v1;
+
+message Events {
+    repeated AcceptedBid accepted_bids = 1;
+    repeated AdminChanged admin_changeds = 2;
+    repeated BeaconUpgraded beacon_upgradeds = 3;
+    repeated CancelledBid cancelled_bids = 4;
+    repeated FeePaid fee_paids = 5;
+    repeated Initialized initializeds = 6;
+    repeated LoanLiquidated loan_liquidateds = 7;
+    repeated LoanRepaid loan_repaids = 8;
+    repeated LoanRepayment loan_repayments = 9;
+    repeated MarketForwarderApproved market_forwarder_approveds = 10;
+    repeated MarketForwarderRenounced market_forwarder_renounceds = 11;
+    repeated MarketOwnerCancelledBid market_owner_cancelled_bids = 12;
+    repeated OwnershipTransferred ownership_transferreds = 13;
+    repeated Paused pauseds = 14;
+    repeated ProtocolFeeSet protocol_fee_sets = 15;
+    repeated SubmittedBid submitted_bids = 16;
+    repeated TrustedMarketForwarderSet trusted_market_forwarder_sets = 17;
+    repeated Unpaused unpauseds = 18;
+    repeated Upgraded upgradeds = 19;
+}
+
+message AcceptedBid {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string bid_id = 5;
+    bytes lender = 6;
+}
+
+message AdminChanged {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes previous_admin = 5;
+    bytes new_admin = 6;
+}
+
+message BeaconUpgraded {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes beacon = 5;
+}
+
+message CancelledBid {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string bid_id = 5;
+}
+
+message FeePaid {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string bid_id = 5;
+    string fee_type = 6;
+    string amount = 7;
+}
+
+message Initialized {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    uint64 version = 5;
+}
+
+message LoanLiquidated {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string bid_id = 5;
+    bytes liquidator = 6;
+}
+
+message LoanRepaid {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string bid_id = 5;
+}
+
+message LoanRepayment {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string bid_id = 5;
+}
+
+message MarketForwarderApproved {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string market_id = 5;
+    bytes forwarder = 6;
+    bytes sender = 7;
+}
+
+message MarketForwarderRenounced {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string market_id = 5;
+    bytes forwarder = 6;
+    bytes sender = 7;
+}
+
+message MarketOwnerCancelledBid {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string bid_id = 5;
+}
+
+message OwnershipTransferred {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes previous_owner = 5;
+    bytes new_owner = 6;
+}
+
+message Paused {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes account = 5;
+}
+
+message ProtocolFeeSet {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    uint64 new_fee = 5;
+    uint64 old_fee = 6;
+}
+
+message SubmittedBid {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string bid_id = 5;
+    bytes borrower = 6;
+    bytes receiver = 7;
+    bytes metadata_uri = 8;
+}
+
+message TrustedMarketForwarderSet {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string market_id = 5;
+    bytes forwarder = 6;
+    bytes sender = 7;
+}
+
+message Unpaused {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes account = 5;
+}
+
+message Upgraded {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes implementation = 5;
+}
